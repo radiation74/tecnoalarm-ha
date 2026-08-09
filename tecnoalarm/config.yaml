@@ -1,0 +1,42 @@
+# Add-on Tecnoalarm TP/EV
+# NB: nessun sorgente qui dentro. "image:" fa sì che il Supervisor SCARICHI
+# l'immagine gia' compilata dal registry privato (serve login al registry).
+name: Tecnoalarm TP/EV
+version: "1.0.0"
+slug: tecnoalarm
+description: Integrazione centrali Tecnoalarm serie TP/EV via IP
+arch:
+  - amd64
+  - aarch64
+  - armv7
+# Immagine pre-compilata (Nuitka) sul registry PRIVATO. {arch} lo sostituisce HA.
+image: "ghcr.io/radiation74/tecnoalarm-{arch}"
+init: false
+# Richiede il broker MQTT (add-on Mosquitto): HA inietta le credenziali.
+services:
+  - mqtt:need
+# Il pannello sta sulla LAN: serve accesso host-network o solo uscita? Basta client.
+# Valori di default mostrati nel form di configurazione dell'utente:
+options:
+  host: "192.168.1.50"
+  port: 10001
+  code: ""
+  passphrase: ""
+  n_programs: 8
+  n_zones: 64
+  n_telecommands: 8
+  poll_interval: 2
+  enable_zone_exclude: true
+  enable_panic: false
+# Schema = genera automaticamente il form nella UI di Home Assistant.
+schema:
+  host: str
+  port: port
+  code: password
+  passphrase: password?
+  n_programs: int(1,128)
+  n_zones: int(1,512)
+  n_telecommands: int(0,128)
+  poll_interval: int(1,30)
+  enable_zone_exclude: bool
+  enable_panic: bool
