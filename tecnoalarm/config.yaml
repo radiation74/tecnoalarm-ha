@@ -7,8 +7,6 @@ slug: tecnoalarm
 description: Integrazione centrali Tecnoalarm serie TP/EV via IP
 arch:
   - amd64
-  - aarch64
-  - armv7
 # Immagine pre-compilata (Nuitka) sul registry PRIVATO. {arch} lo sostituisce HA.
 image: "ghcr.io/radiation74/tecnoalarm-{arch}"
 init: false
