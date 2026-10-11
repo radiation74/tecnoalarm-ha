@@ -2,7 +2,7 @@
 # NB: nessun sorgente qui dentro. "image:" fa sì che il Supervisor SCARICHI
 # l'immagine gia' compilata dal registry privato (serve login al registry).
 name: Tecnoalarm TP/EV
-version: "1.1.0"
+version: "1.2.0"
 slug: tecnoalarm
 description: Integrazione centrali Tecnoalarm serie TP/EV via IP
 arch:
