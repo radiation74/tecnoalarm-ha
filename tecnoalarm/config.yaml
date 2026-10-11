@@ -2,11 +2,12 @@
 # NB: nessun sorgente qui dentro. "image:" fa sì che il Supervisor SCARICHI
 # l'immagine gia' compilata dal registry privato (serve login al registry).
 name: Tecnoalarm TP/EV
-version: "1.2.0"
+version: "1.3.0"
 slug: tecnoalarm
 description: Integrazione centrali Tecnoalarm serie TP/EV via IP
 arch:
   - amd64
+  - aarch64
 # Immagine pre-compilata (Nuitka) sul registry PRIVATO. {arch} lo sostituisce HA.
 image: "ghcr.io/radiation74/tecnoalarm-{arch}"
 init: false
@@ -26,6 +27,7 @@ options:
   poll_interval: 2
   enable_zone_exclude: true
   enable_panic: false
+  require_code_disarm: false
 # Schema = genera automaticamente il form nella UI di Home Assistant.
 schema:
   host: str
@@ -36,5 +38,6 @@ schema:
   n_zones: int(1,512)
   n_telecommands: int(0,128)
   poll_interval: int(1,30)
+  require_code_disarm: bool
   enable_zone_exclude: bool
   enable_panic: bool
